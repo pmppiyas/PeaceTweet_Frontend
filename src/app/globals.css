@@ -1,6 +1,6 @@
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "shadcn/tailwind.css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -123,4 +123,34 @@
   body {
     @apply bg-background text-foreground;
   }
+}
+
+/* Base: scrollbar hidden */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0px; /* hidden by default */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 9999px;
+  transition: width 0.2s;
+}
+
+/* Hover: show scrollbar */
+.custom-scrollbar:hover::-webkit-scrollbar {
+  width: 7px; /* visible on hover */
+}
+
+/* Firefox */
+.custom-scrollbar {
+  scrollbar-width: none; /* hidden by default */
+}
+
+.custom-scrollbar:hover {
+  scrollbar-width: thin; /* thin on hover */
+  scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
 }
