@@ -125,9 +125,9 @@
   }
 }
 
-/* Base: scrollbar hidden */
+/* Base: Scrollbar takes space but is invisible */
 .custom-scrollbar::-webkit-scrollbar {
-  width: 0px; /* hidden by default */
+  width: 7px; /* Always take 7px space to prevent jumping */
 }
 
 .custom-scrollbar::-webkit-scrollbar-track {
@@ -135,22 +135,28 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 9999px;
-  transition: width 0.2s;
+  background-color: transparent; /* Invisible by default */
+  border-radius: 20px;
+  border: 2px solid transparent; /* Padding effect */
+  background-clip: content-box;
 }
 
-/* Hover: show scrollbar */
-.custom-scrollbar:hover::-webkit-scrollbar {
-  width: 7px; /* visible on hover */
+/* Hover: show only the color, don't change width */
+.custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(155, 155, 155, 0.5); /* Semi-transparent gray */
 }
 
-/* Firefox */
+/* Dark mode support (if using Shadcn) */
+.dark .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Firefox Fix */
 .custom-scrollbar {
-  scrollbar-width: none; /* hidden by default */
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 }
 
 .custom-scrollbar:hover {
-  scrollbar-width: thin; /* thin on hover */
-  scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
+  scrollbar-color: rgba(155, 155, 155, 0.5) transparent;
 }

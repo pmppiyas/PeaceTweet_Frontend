@@ -1,13 +1,13 @@
+import LeftDrawerMenu from '@/app/components/navbar/LeftDrawerMenu';
+import RightDrawerMenu from '@/app/components/navbar/RightDrawerMenu';
 import React from 'react';
 
 const CommonLayout = ({ children }: { children: React.ReactNode }) => {
   return (
-    <div className="flex h-screen overflow-hidden gap-12">
+    <div className="flex h-screen  max-w-7xl mx-auto overflow-hidden gap-12">
       {/* Left Sidebar */}
-      <aside className="hidden lg:block w-72 h-full overflow-y-auto custom-scrollbar border-r p-4 bg-green-500">
-        {Array.from({ length: 30 }).map((_, i) => (
-          <p key={i}>Left Item {i + 1}</p>
-        ))}
+      <aside className="hidden lg:block w-72 h-full overflow-y-auto custom-scrollbar ">
+        <LeftDrawerMenu />
       </aside>
 
       {/* Feed / Content */}
@@ -16,10 +16,8 @@ const CommonLayout = ({ children }: { children: React.ReactNode }) => {
       </main>
 
       {/* Right Sidebar */}
-      <aside className="hidden xl:block w-72 h-full overflow-y-auto custom-scrollbar  p-4 bg-green-300">
-        {Array.from({ length: 30 }).map((_, i) => (
-          <p key={i}>Right Item {i + 1}</p>
-        ))}
+      <aside className="hidden xl:block w-72 h-full overflow-y-auto custom-scrollbar ">
+        <RightDrawerMenu />
       </aside>
     </div>
   );
